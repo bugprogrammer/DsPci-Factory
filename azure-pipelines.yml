@@ -40,3 +40,4 @@ steps:
       xcodebuild -configuration Release -arch x86_64 -scheme dspci
       mkdir ../../a/Artifacts
       cp -f $url/dspci ../../a/Artifacts
+      ls $(Build.ArtifactStagingDirectory)/Artifacts
