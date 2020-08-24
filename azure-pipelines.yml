@@ -31,9 +31,12 @@ steps:
     targetType: 'inline'
     script: |
       #!/bin/bash
+      cd ../b
       git clone https://github.com/MuntashirAkon/DPCIManager.git
       cd DPCIManager
       git clone https://github.com/pciutils/pciids.git
       mv pciids/pci.ids .
       url=$(xcodebuild -configuration Release -arch x86_64 -scheme dspci -showBuildSettings | grep TARGET_BUILD_DIR | awk {'print $NF'})
       xcodebuild -configuration Release -arch x86_64 -scheme dspci
+      mkdir ../../a/Artifacts
+      cp -f $url/dspci ../../a/Artifacts
