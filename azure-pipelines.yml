@@ -2,10 +2,6 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-- task: GitHubComment@0
-  inputs:
-    gitHubConnection: 'bugprogrammer'
-    repositoryName: '$(Build.Repository.Name)'
 
 trigger: none
 pr: none
@@ -45,3 +41,8 @@ steps:
       mkdir ../../a/Artifacts
       cp -f $url/dspci ../../a/Artifacts
       ls $(Build.ArtifactStagingDirectory)/Artifacts
+
+- task: GitHubComment@0
+  inputs:
+    gitHubConnection: 'bugprogrammer'
+    repositoryName: '$(Build.Repository.Name)'
