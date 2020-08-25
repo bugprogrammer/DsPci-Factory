@@ -40,11 +40,16 @@ steps:
       xcodebuild -configuration Release -arch x86_64 -scheme dspci
       mkdir ../../a/Artifacts
       cp -f $url/dspci ../../a/Artifacts
+      cd ../b
+      git clone https://github.com/acidanthera/OpenCorePkg.git
+      cd OpenCorePkg/Utilities/macserial
+      make
+      cp -f ./macserial ../../../../a/Artifacts
       ls $(Build.ArtifactStagingDirectory)/Artifacts
 - task: CopyFilesOverSSH@0
   inputs:
     sshEndpoint: 'vps'
     sourceFolder: '$(Build.ArtifactStagingDirectory)/Artifacts'
     contents: '**'
-    targetFolder: '/var/www/downloads'
+    targetFolder: '/var/www/downloads/tools'
     readyTimeout: '20000'
