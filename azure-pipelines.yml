@@ -40,19 +40,16 @@ steps:
       xcodebuild -configuration Release -arch x86_64 -scheme dspci
       mkdir ../../a/Artifacts
       cp -f $url/dspci ../../a/Artifacts
-      ls $(Build.ArtifactStagingDirectory)/Artifacts
-
-- task: GitHubRelease@0
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['BuildCheck'], 'True'))
-  displayName: 'Publish GitHub Release'
+      ls - task: FtpUpload@2
   inputs:
-    gitHubConnection: bugprogrammer
-    repositoryName: '$(Build.Repository.Name)'
-    action: 'edit'
-    target: '$(Build.SourceVersion)'
-    tagSource: 'manual'
-    tag: '$(BuildDate)'
-    title: '$(BuildDate)'
-    assets: '$(Build.ArtifactStagingDirectory)/Artifacts/dspci'
-    addChangeLog: false
-    isPreRelease: true
+    credentialsOption: 'inputs'
+    serverUrl: 'bugprogrammer.me'
+    username: 'root'
+    password: '8781199950211'
+    rootDirectory: '$(Build.ArtifactStagingDirectory)/Artifacts'
+    filePatterns: '**'
+    remoteDirectory: '/var/www/downloads'
+    clean: false
+    cleanContents: false
+    preservePaths: false
+    trustSSL: false
