@@ -7,7 +7,7 @@ trigger: none
 pr: none
 
 schedules:
-- cron: "0 */8 * * *" # DAMN BUG!!!!!!!!!!!!!!!!!!!!!!!!!
+- cron: "0 0 */1 * * ?" # DAMN BUG!!!!!!!!!!!!!!!!!!!!!!!!!
   displayName: Schedule Build
   branches:
     include:
