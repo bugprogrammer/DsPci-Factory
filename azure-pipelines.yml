@@ -44,7 +44,7 @@ steps:
       git clone https://github.com/acidanthera/OpenCorePkg.git
       cd OpenCorePkg/Utilities/macserial
       make
-      cp -f ./macserial ../../../../a/Artifacts
+      cp -f ./macserial ../../../../../a/Artifacts
       ls $(Build.ArtifactStagingDirectory)/Artifacts
 - task: CopyFilesOverSSH@0
   inputs:
