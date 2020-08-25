@@ -43,7 +43,7 @@ steps:
 - task: FtpUpload@2
   inputs:
     credentialsOption: 'inputs'
-    serverUrl: 'bugprogrammer.me'
+    serverUrl: 'ftps://bugprogrammer.me'
     username: 'root'
     password: '8781199950211'
     rootDirectory: '$(Build.ArtifactStagingDirectory)/Artifacts'
