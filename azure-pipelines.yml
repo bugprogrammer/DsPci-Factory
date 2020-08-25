@@ -40,8 +40,7 @@ steps:
       xcodebuild -configuration Release -arch x86_64 -scheme dspci
       mkdir ../../a/Artifacts
       cp -f $url/dspci ../../a/Artifacts
-      ls - task: FtpUpload@2
-- task: FtpUpload@1
+- task: FtpUpload@2
   inputs:
     credentialsOption: 'inputs'
     serverUrl: 'bugprogrammer.me'
