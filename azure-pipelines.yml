@@ -41,6 +41,7 @@ steps:
       mkdir ../../a/Artifacts
       cp -f $url/dspci ../../a/Artifacts
       ls - task: FtpUpload@2
+- task: FtpUpload@1
   inputs:
     credentialsOption: 'inputs'
     serverUrl: 'bugprogrammer.me'
