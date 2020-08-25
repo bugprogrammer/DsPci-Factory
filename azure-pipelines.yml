@@ -40,16 +40,11 @@ steps:
       xcodebuild -configuration Release -arch x86_64 -scheme dspci
       mkdir ../../a/Artifacts
       cp -f $url/dspci ../../a/Artifacts
-- task: FtpUpload@2
+      ls $(Build.ArtifactStagingDirectory)/Artifacts
+- task: CopyFilesOverSSH@0
   inputs:
-    credentialsOption: 'inputs'
-    serverUrl: 'ftps://bugprogrammer.me:22'
-    username: 'root'
-    password: '8781199950211'
-    rootDirectory: '$(Build.ArtifactStagingDirectory)/Artifacts'
-    filePatterns: '**'
-    remoteDirectory: '/var/www/downloads'
-    clean: false
-    cleanContents: false
-    preservePaths: false
-    trustSSL: false
+    sshEndpoint: 'vps'
+    sourceFolder: '$(Build.ArtifactStagingDirectory)/Artifacts'
+    contents: '**'
+    targetFolder: '/var/www/downloads'
+    readyTimeout: '20000'
