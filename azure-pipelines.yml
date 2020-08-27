@@ -14,12 +14,6 @@ schedules:
     - master
   always: true
 
-variables:
-  BuildCheck: 'False'
-  FORCE_INSTALL: 1
-  BUILD_UTILITIES: 1
-  DEBUG: 0
-
 pool:
   vmImage: 'macOS-latest'
 
